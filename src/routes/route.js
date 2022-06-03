@@ -1,6 +1,8 @@
 const express = require('express');
 const myHelper = require('../util/helper')
 const underscore = require('underscore')
+const _ =require('lodash')
+
 
 const router = express.Router();
 
@@ -14,8 +16,29 @@ router.get('/test-me', function (req, res) {
 });
 
 router.get('/hello', function (req, res) {
-   
-    res.send('Hello there!')
+    
+    const month = ['jan','feb','march','april','may','jun','july','aug','sep','oct','nov','dec']
+    const chunk1=_.chunk(month,3)
+    console.log(chunk1)
+
+    const oddNum =[1,3,5,7,9,11,13,15,17,19]
+    const tail = _.tail(oddNum)
+    console.log(tail)
+   res.send('Hello there!')
+
+   const array1 = ['cuttack',"bbsr","baripada","knjr","jsp"]
+   const array2 = ['cuttack',"barmunda","baripada","mbj","jsp"]
+   const array3 = ['smlpr',"bbsr","baripada","knjr","jsp"]
+   const array4 = ['hii',"bbsr","baripada","hello","jsp"]
+   const array5 = ['who',"bbsr","am","knjr","i"]
+
+   const result = _.unionBy(array1, array2, array3,array4,array5);
+   const uniq1 = _.uniq(result)
+   console.log(uniq1)
+
+   let pairs = [['x', 1], ['y', 2], ['z', 3]]
+   let obj = _.fromPairs(pairs);
+   console.log(obj)
 });
 
 router.get('/candidates', function(req, res){
