@@ -8,7 +8,17 @@ const createBook= async function (req, res) {
     res.send({msg: savedData})
 }
 
-const getBooksData= async function (req, res) {
+/*const getBooksData= async function (req, res) {
+
+}*/
+    const getBook= async function (req, res){
+        
+    }
+
+    const getAuthor =async function(req,res){
+        let allBooks= await BookModel.find( { authorName : "girija"  } )
+
+    }
 
     // let allBooks= await BookModel.find( ).count() // COUNT
 
@@ -65,7 +75,7 @@ const getBooksData= async function (req, res) {
     
     // ASYNC AWAIT
     
-    let a= 2+4
+   /* let a= 2+4
     a= a + 10
     console.log(a)
     let allBooks= await BookModel.find( )  //normally this is an asynchronous call..but await makes it synchronous
@@ -81,5 +91,6 @@ const getBooksData= async function (req, res) {
 }
 
 
+
+module.exports.getBooksData= getBooksData*/
 module.exports.createBook= createBook
-module.exports.getBooksData= getBooksData
