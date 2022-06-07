@@ -9,11 +9,11 @@ router.get("/test-me", function (req, res) {
 })
 
 router.post("/createUser", UserController.createUser  )
-
 router.get("/getUsersData", UserController.getUsersData)
 
 router.post("/createBook", BookController.createBook  )
-
 router.get("/getBooksData", BookController.getBooksData)
-
+router.get("/getBooksInYear", BookController.getBooksInYear)
+router.get("/getBooksInYear", BookController.getParticularBooks)
+router.get("/getXINRBooks", BookController.getXINRBooks)
 module.exports = router;
