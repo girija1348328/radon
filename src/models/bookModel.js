@@ -4,29 +4,18 @@ const bookSchema = new mongoose.Schema( {
     
     name:String,
     author_id:{type:Number,
-        required:true},
-    price:Number,
-    ratings:Number,
+        required:true},                   //Write create APIs for both books and authors ---> If author_id is not available then do not accept 
+                                           //the entry(in neither the author collection nor the books collection)price:Number
+      ratings:Number,
 
 }, { timestamps: true });
 
 
-const authorSchema = new mongoose.Schema({
-
-    
-    author_id:{type:Number,
-                required:true},
-    author_name:{Type:String,//chetanBhagat
-        },
-
-    age:Number,
-    address:String}
-
-)
 
 
-module.exports = mongoose.model('Book', bookSchema) //books
-module.exports = mongoose.model('Author', authorSchema)//author
+
+module.exports = mongoose.model('Book2', bookSchema) //books
+
 //Validation:
 //require:true
 //unique

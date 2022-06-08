@@ -1,5 +1,6 @@
-const { count } = require("console")
+//const { count } = require("console")
 const BookModel= require("../models/bookModel")
+const AuthorModel= require("../models/AuthorModel")
 
 const createBook= async function (req, res) {
     let data= req.body
@@ -8,17 +9,36 @@ const createBook= async function (req, res) {
     res.send({msg: savedData})
 }
 
-/*const getBooksData= async function (req, res) {
+const AuthorModel2= async function (req, res) {
+    let data= req.body
 
-}*/
-    const getBook= async function (req, res){
-        
+    let savedData= await AuthorModel.create(data)
+    res.send({msg: savedData})
+}
+
+const getBooksChetanBhagat= async function (req, res) {
+
+    let data = await AuthorModel.find({authorName:"Chetan Bhagat"}).select("author_Id")
+    let bookData = await BookModel.find({author_id:data[0].author_id})
+    res.send({msg:bookData})
+}
+
+
+
+
+    const getAuthorOfBook =async function(req,res){
+        let allBooks= await BookModel.findOneAndUpdate( { name : "Two States"  },{$set:{prices:100}},{new:true} )
+        let bookData = await AuthorModel.find({author_id:allBooks.author_id}).select("author_name")
+        let price = bookData.prices
+        res.send({msg:authorData,price})
+
     }
 
-    const getAuthor =async function(req,res){
-        let allBooks= await BookModel.find( { authorName : "girija"  } )
 
-    }
+module.exports.getBooksChetanBhagat= getBooksChetanBhagat
+module.exports.createBook= createBook
+module.exports.getAuthorOfBook= getAuthorOfBook
+module.exports.AuthorModel2=AuthorModel2
 
     // let allBooks= await BookModel.find( ).count() // COUNT
 
@@ -89,8 +109,8 @@ const createBook= async function (req, res) {
     console.log(b)
     res.send({msg: allBooks})
 }
+*/
 
 
 
-module.exports.getBooksData= getBooksData*/
-module.exports.createBook= createBook
+
