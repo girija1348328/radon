@@ -13,10 +13,10 @@ router.post("/login", userController.loginUser)
 
 //The userId is sent by front end
 
-router.get("/users/:userId",mw.jwtMiddleware, userController.getUserData) //get user data Api
+router.get("/users/:userId",mw.authenticate,mw.autherization, userController.getUserData) //get user data Api
 
-router.put("/users/:userId",mw.jwtMiddleware, userController.updateUser) //update User data
+router.put("/users/:userId",mw.authenticate,mw.autherization,  userController.updateUser) //update User data
 
-router.delete("/user/:userId",mw.jwtMiddleware,userController.deleteUser)
+router.delete("/user/:userId",mw.authenticate,mw.autherization, userController.deleteUser)
 
 module.exports = router;
