@@ -36,7 +36,7 @@ const CreateAuthor = async function (req, res) {
             return res.status(400).send({ msg: `Password should be 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter` })
 
         const find = await AuthorModel.findOne({email:email}) 
-        if(find) res.status(404).send({status:false, msg: "This email already exists"})
+        if(find) res.status(404).send({status:false, msg: "This email is already exists"})
        
         const CreatedData = await AuthorModel.create(data)
         res.status(201).send({ msg: CreatedData })
@@ -72,7 +72,7 @@ const logIn = async function (req, res) {
         "Blog-site"
     );
     res.setHeader("x-api-key", token);
-    res.status(201).send({ msg: "successfully login", token: token });
+    res.status(200).send({ msg: "successfully login", token: token });
     }
     catch(err){
         res.status(500).send({msg: err.message})
